@@ -171,3 +171,7 @@ You can also use those variables to adapt your compose file to match an existing
 # Wanna help?
 
 Fork, improve and PR.
+
+docker context create builder
+docker buildx create builder --use --driver docker-container --platform linux/arm64,linux/amd64
+docker buildx build --platform linux/amd64,linux/arm64 --rm --build-arg AIRFLOW_DEPS="datadog,dask" --build-arg PYTHON_DEPS="flask_oauthlib>=0.9" -t registry.gitlab.com/<NAME>/airflow-service/base:1.10.15 --push .
